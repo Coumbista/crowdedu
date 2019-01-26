@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<title>Projet</title>
+
+{% block body %}
+    <h1>Projet</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ projet.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ projet.description }}</td>
+            </tr>
+            <tr>
+                <th>Budjet</th>
+                <td>{{ projet.budjet }}</td>
+            </tr>
+            <tr>
+                <th>TitreProjet</th>
+                <td>{{ projet.titreProjet }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ projet.photo }}</td>
+            </tr>
+            <tr>
+                <th>Video</th>
+                <td>{{ projet.video }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ projet.date ? projet.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('projet_index') }}">back to list</a>
+
+    <a href="{{ path('projet_edit', {'id': projet.id}) }}">edit</a>
+
+    {{ include('projet/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,106 @@
+  {% extends 'Frontend.html.twig' %}
+  {# {% block section3 %}{% endblock %} #}
+  
+  {% block campagne %}
+   {# <section class="probootstrap-section">
+    <div class="container">
+            <div class="row">
+              <div class="col-md-6 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+              <figure>
+                 <object width="425" height="344" data="https://www.youtube.com/embed/cnex9vsyHYs"></object>
+                  </figure>
+                  </div>
+                  <div class="col-md-6 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+                  <p> cette video vous aiderez a faire un </p>
+                  </div>
+                  </div>
+                  </div> #}
+  <section class="probootstrap-section">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+                <h2>Causes les plus populaires</h2>
+                            </div>
+            </div>
+
+         
+            <div class="row">
+             {% for projt in projet %}
+              <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 probootstrap-animate" data-animate-effect="fadeIn">
+                <div class="probootstrap-image-text-block probootstrap-cause" style="width:80%;height:300px">
+                  <figure>
+                  <a href="{{path('findID', {'id':projt.id})}}"> <img src="data:photo/jpg;base64,{{projt.photo}}" alt="Free Bootstrap Template by uicookies.com" class="img-responsive" style="height:200px;width:80%"></a>
+                  </figure>
+                  <div class="row mb30">
+                      <div class="col-md-6 col-sm-6 col-xs-6 "></div>                    
+                    </div>
+                    <span><b>{{ projt.user.prenom}} {{ projt.user.nom}}</b></span>
+                    <span><h6><a href="#" style="color:#000000;font-size:13px;font-family:ubuntu">{{ projt.titreProjet}}</a></h6></span>
+                   <span> <strong style="font-size:14px;font-family:ubuntu">{{ projt.description }}</strong></span>
+                    
+                  <div class="probootstrap-cause-inner">
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-s2" data-percent="1">
+                    </div>
+                    </div>
+                    
+                    <div class="row mb30">
+                    <ul class="nav navbar-nav ">
+                    <li>
+                      <span>12500F<b>collecté sur</b></span></li>
+                      <li><span>{{projt.budjet}}F</span></li>
+                      {# <div class="col-md-6 col-sm-6 col-xs-6 "><span>{{projt.budjet}}Fcfa</span></div> #}
+                    </div>                          
+                  <p><a href="{{path('findID', {'id':projt.id})}}" class="btn btn-primary "style="background-color:#96bf31;border-color:#96bf31">Voir +!</a></p>
+                  </div>
+                </div>
+              </div>   
+              {% endfor %} 
+              <div class="row"> 
+              <div class="col-lg-4"></div>
+              <div class="col-lg-4">             
+                {# <a href="{{ path('user_registration')}}" class="btn probootstra-cta-button "style="background-color:#96bf31;color:#ffffff;height:40px;marggin-left:90px;">Démarrer une campagne</a> #}
+              </div>
+               <div class="col-lg-4"></div>
+                  </div>     
+              </div>  
+              <div class="navigation">
+              {{ knp_pagination_render(projet) }}
+                </div>     
+        </section>
+        {% endblock %}
+            {% block section1 %}
+                   <section class="probootstrap-section probootstrap-bg " style="background-image: url(img/hero_bg_bw_1.jpg);background-color:#053151"  data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+              <h2>DERNIERS DONS</h2>
+              <p class="lead"></p>
+            </div>
+          </div>
+           
+          {# <div class="row">
+          {% for donate in don %} #}
+          {# {{dump((donate.montant / donate.projet.budjet )* 100)}} #}
+            {# <div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12">
+              <div class="probootstrap-donors text-center probootstrap-animate">
+                <figure class="media">
+                  <img src="data:photo/jpg;base64,{{donate.projet.photo}}" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+                </figure>
+                <div class="text">
+                  <h3>{{donate.projet.user.prenom}} {{donate.projet.user.nom}}</h3>
+                  <p class="donated">Donné <span class="money">{{donate.montant}}</span></p>
+                </div>
+              </div>
+            </div>
+             {% endfor %} 
+            </div>           #}
+         
+        {# </div> #}
+      </section>
+            {% endblock %}
+            
+  
+          {# {% block categorie %}        
+
+              {% endblock %} #}

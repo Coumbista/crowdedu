@@ -1,0 +1,145 @@
+{% extends 'Frontend.html.twig' %} 
+ {% block section0 %}{% endblock %}
+{% block section1 %}{% endblock %}
+{% block section2 %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block div %}
+        <nav class="navbar navbar-default probootstrap-navbar" style="background: none;">
+        <div class="header">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-header" href="{{path('front')}}"><img src="{{asset('assets/img/Logo-CrowdEdu-Africa-1.png')}}" style="width:120px; margin-top:25px;margin-left:40px;"></a>
+          </div>
+          </nav>
+  {% endblock %}
+{% block campagne %} 
+<div class="container-fluid"style="margin-top:90px;"><br>
+<div class="container">
+<div class="row"><div class="col-lg-1"></div>
+
+<div class="col-lg-10"style=";border-top: 6px solid green"><br>
+  <div class="row" style="">   
+      <div class="col-lg-8 col-md-4 col-sm-6 col-xs-6 col-xxs-12">
+      <div class="card">
+        <div class="card-header "style="background-color:#96bf31;color:#ffffff;font-size:20px;font-family:ubuntu;text-align:center; ">
+                  <span><b >Faire un don</b></span>
+                  </div>
+                  <div class="card-body">
+                    {{form_start(form)}}
+                          <div class="form-group"> 
+                          <div class="form-group">          
+                          {{form_row (form.montant,{'attr':{'class':'form-control'}}) }}
+                          </div>       
+                            {{form_row(form.nom,{'attr':{'class':'form-control'}}) }}
+                          </div>
+                          <div class="form-group">          
+                          {{form_row(form.prenom,{'attr':{'class':'form-control'}}) }}
+                          </div>    
+                          <div class="form-group">          
+                          {{form_row (form.email,{'attr':{'class':'form-control'}}) }}
+                          </div>
+                            {# <div class="form-group">    
+                              {{form_row(form.code_transfert,{'attr':{'class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">   
+                            {{form_row(form.code_etu,{'attr':{'class':'form-control'}}) }} 
+                          </div>   #}
+                      </div>
+                      <div class="card-footer text-muted">
+                      <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 col-xxs-12"></div>
+                              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 col-xxs-12">
+                              <h4 class="card-title"><button  onclick="buy(this)" data-item-id="11"class="buy" type="submit"style="background-color:#96bf31;color:#ffffff;font-family:ubuntu;">Faire un don</button></h4>
+                              </div>
+                              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 col-xxs-12"> <a href="{{path('findID', {'id':projt.id})}}" style="color:#96bf31">Annuler</a></div>
+                            </div>
+                  </div>
+                      
+                      {{ form_end(form) }}       
+                </div> 
+                <img src="{{asset('assets/img/PayExpresse.jpg')}}" style="width: 100%;">    
+                </div>
+            {# <div class="col-lg-1 col-md-4 col-sm-6 col-xs-6 col-xxs-12"></div> #}
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 col-xxs-12">
+            <p>{{ projt.user.prenom}} {{ projt.user.nom}}</p>
+            <div class="card" style="width:250px">
+              <img class="card-img-top" src="data:photo/jpg;base64,{{projt.affichePhoto}}" alt="Card image" style="width:100%">
+              <div class="card-body"><br>
+                <p class="card-title"><span style="font-family:ubuntu;font-size:25px;color:#120D16">1000 Fcfa</span> sur {{projt.budjet}} Fcfa </p> 
+                <p class="card-text"> 
+                      <div class="probootstrap-cause-inner">
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-s2" data-percent="2">
+                            </div>
+                            </div><span style="font-size:12px;color:#120D16;font-family:ubuntu;">2 personnes ont fait un don en 1 jour</span></p>
+                <a class="navbar-header" href=""><img src="{{asset('assets/img/Logo-CrowdEdu-Africa-1.png')}}" style="width:120px; margin-left:40px"></a>
+                
+              </div>
+            </div><br><br>
+            <div>
+          <div style="font-size:16px;color:#120D16;font-family:ubuntu;">À propos de l'organisation</div>            
+                          <div style="font-size:12px;color:#120D16;font-family:ubuntu;">Crowdedu recevra directement votre don.</div>
+                          <div style="font-size:12px;color:#120D16;font-family:ubuntu;">Votre don est protégé par la garantie FundingEDu.</div>          
+                      </div>
+
+                </div>
+            </div>
+            </div>            
+            <div class="col-lg-1"></div>
+  </div>
+  </div>
+</div>
+
+{% endblock %}
+{% block script %}
+<script
+                                src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                                integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+                                crossorigin="anonymous"></script>
+<script src="https://cdn.payexpresse.com/v1/payexpresse.min.js"></script>
+<script>
+                        
+                        
+                            function buy(btn) {
+                                var selector = $(btn);
+                        
+                                (new Don({
+                                    item_id          :   selector.attr('data-item-id'),
+                                })).withOption({
+                                    requestTokenUrl           :   '<?= BASE_URL ?>/paiement',
+                                    method              :   'POST',
+                                    headers             :   {
+                                        "Accept"          :    "text/html"
+                                    },
+                                    prensentationMode   :   PayExpresse.OPEN_IN_POPUP,
+                                    didPopupClosed: function (is_completed, success_url, cancel_url) {
+                                        window.location.href = is_completed === true ? success_url  : cancel_url;
+                                    },
+                                    willGetToken        :   function () {
+                                        console.log("Je me prepare a obtenir un token");
+                                        selector.prop('disabled', true);
+                                    },
+                                    didGetToken         : function (token, redirectUrl) {
+                                        console.log("Mon token est : " +  token  + ' et url est ' + redirectUrl );
+                                        selector.prop('disabled', false);
+                                    },
+                                    didReceiveError: function (error) {
+                                        console.log('erreur inconnu', error.toString());
+                                        selector.prop('disabled', false);
+                                    },
+                                    didReceiveNonSuccessResponse: function (jsonResponse) {
+                                        console.log('non success response ',jsonResponse);
+                                        alert(jsonResponse.errors);
+                                        selector.prop('disabled', false);
+                                    }
+                                }).send();
+                        
+                                //.send params are optional
+                            }
+                        </script>
+{% endblock %}

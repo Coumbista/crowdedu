@@ -1,0 +1,13 @@
+{% extends 'admin.html.twig' %}
+ {% block reso_sociaux %}{% endblock %}
+ {% block users %}{% endblock %}
+            {% block div3 %}
+            {{ form_start(form) }}
+                  {{ form_row(form.budjet,{'attr':{'class':'form-control'}})}}
+                   {{ form_row(form.categorie,{'attr':{'class':'form-control'}}) }}   
+                  {{ form_row(form.titre_projet,{'attr':{'class':'form-control'}}) }}
+                  {{ form_row(form.description,{'attr':{'class':'form-control'}}) }}
+                <button class="btn" style="background:#96bf31;color:#ffffff ! important">{{ button_label|default('Save') }}</button>
+                <button class="btn"style="background:#096ea2"><a href="{{path('projet_index')}}" style="color:#ffffff ! important">Annuler</a></button>
+            {{ form_end(form) }}
+            {% endblock %}

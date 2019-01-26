@@ -1,0 +1,76 @@
+   {% extends 'Frontend.html.twig' %} 
+ {% block section0 %}{% endblock %}
+{% block section1 %}{% endblock %}
+{% block section2 %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block div %}
+<nav class="navbar navbar-default probootstrap-navbar" style="background: none;">
+        <div class="header">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-header" href="{{path('front')}}"><img src="{{asset('assets/img/Logo-CrowdEdu-Africa-1.png')}}" style="width:120px; margin-top:25px;margin-left:40px;"></a>
+          </div>
+          <div id="navbar-collapse" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">              
+              <li><a href="#"style="color:#000000"> Vous n'avez pas de compte?</a></li>          
+              <li class=""> <a href="{{ path('user_registration')}}" style="color:#96bf31"> S'inscrire</a></li>
+            </ul>
+          </div>
+          </nav>
+  {% endblock %}
+  {% block campagne %} 
+  <div class="container"style="margin-top:150px;">
+  {% if app.user != null %}
+  {# {{dump(app.user.prenom)}} #}
+  {% endif %}
+  <div class="row">
+  <div class="col-lg-3"></div>
+      <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6 col-xxs-12">
+   <div class="card" style="background-color:">
+       <div class="card-header">
+       {% if error %}
+       <span style=" color:red ">{{error.messageKey}}</span>
+       {% endif %}
+          <div class="card-header "style="background-color:#96bf31;color:#ffffff;font-family:ubuntu;text-align:center;">
+         <span><b >Se connecter</b></span>
+        </div>                   
+        </div> <br>
+       <div class="card-body">        
+          <form action="{{path('login')}}" method="POST" >
+          <div class="form-group">
+          <input type="text" class="form-control"name="_username" value="{{last_username}}" placeholder="nom d'utilisateur">
+          </div>
+           <div class="form-group">
+             <input class="form-control" type="password" name="_password"  placeholder="nom d'utilisateur">
+            </div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+              <div class="row">
+                  <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+              <div class="form-group">
+             <button style="background-color:#96bf31;color:#ffffff;font-family:ubuntu;" type="submit" class="btn"> connecter</button>
+             </div>
+              </div>
+                 <div class="col-lg-4"></div>
+                  </div>
+          </form>
+       </div><br>
+       <div class="card-footer text-muted">
+          <div class="row">
+                  <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                <h6> <a href="{{path('send_mail')}}"  style="color:#053151">Mot de passe oublié</a></h6>
+              </div>
+                 <div class="col-lg-4"></div>
+                  </div>
+       </div>
+   </div>
+   </div>
+   </div>
+   </div>
+{% endblock %}

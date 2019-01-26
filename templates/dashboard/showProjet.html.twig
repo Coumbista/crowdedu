@@ -1,0 +1,25 @@
+{% extends 'admin.html.twig' %}
+{% block users %}{% endblock %}
+{% block reso_sociaux %}{% endblock %}
+{% block div3 %}
+<div class="content-wrapper">
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">{{projet.user.prenom}} {{projet.user.nom}}</h4>
+                  <div class="float-chart-container">
+                    <div id="pie-chart" class="float-chart"><img src="data:photo/jpg;base64,{{projet.photo}}" alt="Free Bootstrap Template by uicookies.com" class="img-responsive"style="height:200px;width:70%">
+                        </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form method="post" action="{{ path('projet_delete', {'id': projet.id}) }}" onsubmit="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ projet.id) }}">
+    <button class="btn">Delete</button>
+</form>
+{% endblock %}

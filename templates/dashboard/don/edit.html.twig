@@ -1,0 +1,30 @@
+
+{% extends 'admin.html.twig' %}
+{% block users %}{% endblock %}
+{% block reso_sociaux %}{% endblock %}
+{% block div3 %}
+
+    <h1>Editer Don</h1>
+    <div class="row">
+    <div class="col-lg-12">
+        {{ form_start(form) }}
+     {{ form_row(form.montant,{'attr':{'class':'form-control'}})}}
+      {{ form_row(form.nom,{'attr':{'class':'form-control'}})}}
+       {{ form_row(form.prenom,{'attr':{'class':'form-control'}})}}
+        {{ form_row(form.email,{'attr':{'class':'form-control'}})}}
+         {{ form_row(form.date,{'attr':{'class':'form-control'}})}}
+        
+        <button class="btn" style="background:#096ea2;color:#ffffff ! important">{{ button_label|default('Modifier') }}</button>
+      
+            {{ form_end(form) }}
+            </div>
+            </div><br>
+            <div class="row">
+                    <div class="col-lg-6">
+            <a href="{{ path('don_index') }}" class=" btn" style="background:#053651;color:#ffffff ! important">Annuler</a>
+        </div>
+        <div class="col-lg-6">
+            {{ include('dashboard/don/_delete_form.html.twig') }}
+        </div>
+        </div>
+{% endblock %}

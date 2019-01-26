@@ -1,0 +1,118 @@
+{% extends 'Frontend.html.twig' %}
+{% block section0 %}{% endblock %}
+{% block section1 %}{% endblock %}
+{% block section2 %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block div %}
+ <nav class="navbar navbar-default probootstrap-navbar" style="background: none;">
+        <div class="header">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-header" href="{{path('front')}}"><img src="{{asset('assets/img/Logo-CrowdEdu-Africa-1.png')}}" style="width:120px; margin-top:25px;margin-left:40px;"></a>
+          </div>
+          <div id="navbar-collapse" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">              
+              <li><a href="{{path('user_registration')}}" style="color:#96bf31;"><i class="fa fa-search"></i> Recherche</a></li>          
+              <li class=""> <a href="{{ path('user_registration')}}" style="color:#96bf31"> Démarrer une campagne</a></li>
+            </ul>
+             <ul class="nav navbar-nav navbar-right" style=" margin-right:50px">  
+             <li class="probootstra-cta-button last">
+               <a href="{{ path('user_registration')}}" class="btn "style="background-color:#96bf31;border-radius:2px "><i class="fab fa-facebook-square"></i> Partager</a>
+               </li>
+                <li class="probootstra-cta-button last">
+               <a href="https://twitter.com/intent/tweet" data-gfm-analytics-element="btn_donate_topnavsharetwitter" class="btn "style="background-color:#053151;border-radius:2px"><i class="fab fa-twitter"></i> Twitter</a>
+               </li>
+               <li class="probootstra-cta-button last">
+               <a href="{{ path('user_registration')}}" class="btn "style="background-color:#096ea2;border-radius:2px"> Faire un don</a>
+               </li>
+               </ul>
+          </div>
+          </nav>
+  {% endblock %}
+{% block campagne %}
+<section class="probootstrap-section" style="margin-top:50px;">
+        <div class="container">
+        <div class="row">
+          <div class="col-lg-8">     
+                          <figure>
+                          <img src="data:photo/jpg;base64,{{projet.photo}}" alt="Free Bootstrap Template by uicookies.com" class="img-responsive"style="height:400px;width:60%">
+                        </figure>       
+                          <h2><a href="#" style ="color:#000000">{{ projet.user.prenom}} {{ projet.user.nom}}</a></h2>            
+                          <p>{{ projet.description }}</p>                          
+             </div><br>                       
+          <div class="col-lg-4">            
+             <div class="card">
+               <div class="card-header">
+                  <span > <b style="color:#000000">1000 Fcfa</b> sur un objectif de {{ projet.budjet}} Fcfa</span><br><br>
+                  <div class="probootstrap-cause-inner">
+                      <div class="progress">
+                        <div class="progress-bar progress-bar-s2" data-percent="2"></div>
+                      </div>
+                    </div>
+               </div>
+                {# <p> Campagne creé depuis nb jour</p> #}
+                <div class="card-body">
+                    <a href="{{path('fairedon', {'id':projet.id})}}" > <button type="button" class="btn" style="background-color:#96bf31;color:#ffffff;border-radius:2px;width:300px;height:50px">Faire un don</button></a>
+                      </div><br>
+                      <div class="card-footer text-muted">
+                       <button type="button" class="btn" style="background-color:#053151;color:#ffffff;border-radius:2px;width:300px;height:50px"><i class="fab fa-facebook-square"></i> Partager sur facebook</button>
+                      </div>
+                </div><br>
+                <b><p style="font-family:ubuntu;font-size:12px;color:#000000">Date de création: {{projet.date  | date ('d-m-Y')}}</p></b>
+                 
+             </div>
+             </div>           
+        </div>
+        <div class="row">
+        <div class="col-lg-6">
+            <div class="row">
+            <div class="col-lg-6">
+                <button type="button" class="btn" style="background-color:#96bf31;color:#ffffff;border-radius:2px;width:300px;height:50px"> <i class="fab fa-facebook-square"></i> Partager</button><br> 
+              </div>                     
+                <div class="col-lg-6"> 
+                <button type="button" class="btn" style="background-color:#053151;color:#ffffff;border-radius:2px;width:300px;height:50px"><i class="fab fa-twitter"></i> Twitter</button></div>
+                </div>
+         </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-3">
+         <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#home" style="color:#96bf31">Don récents</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#menu1"style="color:#96bf31">Dons plus élevés</a>
+        </li>   
+      </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+      <h3>Don récents</h3>
+      {% for donate in don %}
+      <div>{{donate.montant}} <b style="font-family:Courier New, Courier, monospace">Fcfa</b></div>
+       <div>{{donate.prenom}} {{donate.nom}}</div>
+      {% endfor %}
+    </div>
+    <div id="menu1" class="container tab-pane fade"><br>
+      <h3>Dons plus élevés</h3>
+       {% for dona in donEL %}
+      <div>{{dona.montant}} <b style="font-family:Courier New, Courier, monospace">Fcfa</b></div>
+       <div>{{dona.prenom}} {{dona.nom}}</div>
+      {% endfor %}
+    </div>
+   
+  </div>
+
+        </div>
+        </div>
+      </div>
+     </section>
+           {# <video src="data:video/mp4;base64,{{projet.video}}"  type="video/mp4" alt="Free Bootstrap Template by uicookies.com" ></video> #}
+
+       
+{% endblock %}
