@@ -169,30 +169,24 @@ class __TwigTemplate_21fd3004eec31f81249ec0030fe8d99e2470ae9c892ccdb0264db451ec9
 
         echo " 
   <div class=\"container\"style=\"margin-top:150px;\">
-  ";
-        // line 29
-        echo "  ";
-        // line 30
-        echo "  ";
-        // line 31
-        echo "  <div class=\"row\">
+  <div class=\"row\">
     <div class=\"col-lg-12\">
       ";
-        // line 33
+        // line 30
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 33, $this->source); })()), "flashes", array(0 => array(0 => "warning", 1 => "error", 2 => "success")), "method"));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 30, $this->source); })()), "flashes", array(0 => array(0 => "warning", 1 => "danger", 2 => "success")), "method"));
         foreach ($context['_seq'] as $context["label"] => $context["messages"]) {
-            // line 34
+            // line 31
             echo "        ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($context["messages"]);
             foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-                // line 35
+                // line 32
                 echo "          <div class=\"alert alert-";
                 echo twig_escape_filter($this->env, $context["label"], "html", null, true);
                 echo "\">
             ";
-                // line 36
+                // line 33
                 echo twig_escape_filter($this->env, $context["message"], "html", null, true);
                 echo "
           </div>
@@ -201,13 +195,13 @@ class __TwigTemplate_21fd3004eec31f81249ec0030fe8d99e2470ae9c892ccdb0264db451ec9
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 39
+            // line 36
             echo "      ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['label'], $context['messages'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 40
+        // line 37
         echo "    </div>
   </div>
   <div class=\"row\">
@@ -216,18 +210,21 @@ class __TwigTemplate_21fd3004eec31f81249ec0030fe8d99e2470ae9c892ccdb0264db451ec9
    <div class=\"card\" style=\"background-color:\">
        <div class=\"card-header\">
        ";
-        // line 50
+        // line 47
         echo "          <div class=\"card-header \"style=\"background-color:#96bf31;color:#ffffff;font-family:ubuntu;text-align:center;\">
          <span><b >Se connecter</b></span>
         </div>                   
         </div> <br>
-       <div class=\"card-body\">        
-          <form action=\"";
-        // line 55
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("send_mail");
-        echo "\" method=\"POST\" >
+       <div class=\"card-body\"> 
+        ";
+        // line 52
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 52, $this->source); })()), 'form_start');
+        echo "
           <div class=\"form-group\">
-          <input type=\"text\" class=\"form-control\" name=\"_email\"  placeholder=\"email\">
+           ";
+        // line 54
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 54, $this->source); })()), "email", array()), 'row', array("attr" => array("class" => "form-control")));
+        echo "
           </div>
               <div class=\"row\">
                   <div class=\"col-lg-2\"></div>
@@ -238,10 +235,10 @@ class __TwigTemplate_21fd3004eec31f81249ec0030fe8d99e2470ae9c892ccdb0264db451ec9
               </div>
                  <div class=\"col-lg-2\"></div>
                   </div>
-          </form>
           ";
-        // line 69
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 69, $this->source); })()), 'form');
+        // line 66
+        echo "        ";
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 66, $this->source); })()), 'form_end');
         echo "
        </div><br>
        <div class=\"card-footer text-muted\">
@@ -278,7 +275,7 @@ class __TwigTemplate_21fd3004eec31f81249ec0030fe8d99e2470ae9c892ccdb0264db451ec9
 
     public function getDebugInfo()
     {
-        return array (  244 => 69,  227 => 55,  220 => 50,  211 => 40,  205 => 39,  196 => 36,  191 => 35,  186 => 34,  182 => 33,  178 => 31,  176 => 30,  174 => 29,  162 => 26,  147 => 21,  137 => 16,  126 => 7,  117 => 6,  100 => 5,  83 => 4,  66 => 3,  49 => 2,  15 => 1,);
+        return array (  240 => 66,  226 => 54,  221 => 52,  214 => 47,  205 => 37,  199 => 36,  190 => 33,  185 => 32,  180 => 31,  176 => 30,  162 => 26,  147 => 21,  137 => 16,  126 => 7,  117 => 6,  100 => 5,  83 => 4,  66 => 3,  49 => 2,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -310,12 +307,9 @@ class __TwigTemplate_21fd3004eec31f81249ec0030fe8d99e2470ae9c892ccdb0264db451ec9
   {% endblock %}
   {% block campagne %} 
   <div class=\"container\"style=\"margin-top:150px;\">
-  {# {% if app.user != null %} #}
-  {# {{dump(app.user.prenom)}} #}
-  {# {% endif %} #}
   <div class=\"row\">
     <div class=\"col-lg-12\">
-      {% for label, messages in app.flashes(['warning', 'error', 'success']) %}
+      {% for label, messages in app.flashes(['warning', 'danger', 'success']) %}
         {% for message in messages %}
           <div class=\"alert alert-{{ label }}\">
             {{ message }}
@@ -336,10 +330,10 @@ class __TwigTemplate_21fd3004eec31f81249ec0030fe8d99e2470ae9c892ccdb0264db451ec9
          <span><b >Se connecter</b></span>
         </div>                   
         </div> <br>
-       <div class=\"card-body\">        
-          <form action=\"{{path('send_mail')}}\" method=\"POST\" >
+       <div class=\"card-body\"> 
+        {{ form_start(form) }}
           <div class=\"form-group\">
-          <input type=\"text\" class=\"form-control\" name=\"_email\"  placeholder=\"email\">
+           {{ form_row(form.email,{'attr':{'class':'form-control'}})}}
           </div>
               <div class=\"row\">
                   <div class=\"col-lg-2\"></div>
@@ -350,8 +344,8 @@ class __TwigTemplate_21fd3004eec31f81249ec0030fe8d99e2470ae9c892ccdb0264db451ec9
               </div>
                  <div class=\"col-lg-2\"></div>
                   </div>
-          </form>
-          {{ form(form) }}
+          {# </form> #}
+        {{ form_end(form) }}
        </div><br>
        <div class=\"card-footer text-muted\">
           <div class=\"row\">

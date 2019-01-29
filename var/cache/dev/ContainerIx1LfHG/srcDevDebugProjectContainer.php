@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerR04hJg6;
+namespace ContainerIx1LfHG;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -838,7 +838,7 @@ class srcDevDebugProjectContainer extends Container
         }, 'Symfony\\Component\\Form\\FormRenderer' => function () {
             return ($this->privates['twig.form.renderer'] ?? $this->load('getTwig_Form_RendererService.php'));
         }))));
-        $instance->addGlobal('addr_web', 'http://127.0.0.1:8000');
+        $instance->addGlobal('addr_web', 'http://192.168.40.227:8080');
         (new \Symfony\Bundle\TwigBundle\DependencyInjection\Configurator\EnvironmentConfigurator('F j, Y H:i', '%d days', NULL, 0, '.', ','))->configure($instance);
 
         return $instance;
@@ -1557,7 +1557,7 @@ class srcDevDebugProjectContainer extends Container
             'container.dumper.inline_class_loader' => true,
             'env(DATABASE_URL)' => '',
             'locale' => 'en',
-            'addr_web' => 'http://127.0.0.1:8000',
+            'addr_web' => 'http://192.168.40.227:8080',
             'fragment.renderer.hinclude.global_template' => '',
             'fragment.path' => '/_fragment',
             'kernel.http_method_override' => true,

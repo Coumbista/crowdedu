@@ -37,6 +37,7 @@ class srcDevDebugProjectContainerUrlGenerator extends Symfony\Component\Routing\
         'fairedon' => array(array('id'), array('_controller' => 'App\\Controller\\FrontController::faireDon'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/fairedon')), array(), array()),
         'edit_projet' => array(array('id'), array('_controller' => 'App\\Controller\\FrontController::edit'), array(), array(array('text', '/edit_projet'), array('variable', '/', '[^/]++', 'id')), array(), array()),
         'send_mail' => array(array(), array('_controller' => 'App\\Controller\\FrontController::index'), array(), array(array('text', '/mail')), array(), array()),
+        'change_mdp' => array(array(), array('_controller' => 'App\\Controller\\FrontController::modifMPD'), array(), array(array('text', '/change_mdp')), array(), array()),
         'paiement' => array(array(), array('_controller' => 'App\\Controller\\PaiementController::index'), array(), array(array('text', '/paiement')), array(), array()),
         'user_registration' => array(array(), array('_controller' => 'App\\Controller\\RegistrationController::register'), array(), array(array('text', '/register')), array(), array()),
         'login' => array(array(), array('_controller' => 'App\\Controller\\SecurityController::login'), array(), array(array('text', '/login')), array(), array()),

@@ -6,6 +6,7 @@ use App\Entity\Don;
 use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\DBAL\Query\QueryBuilder;
 
 /**
  * @method Don|null find($id, $lockMode = null, $lockVersion = null)
@@ -48,16 +49,7 @@ class DonRepository extends ServiceEntityRepository
         ;
     }
     */
-    public function percentage($projet): ?Don{
-        return $this->createQueryBuilder('d')
-        ->join('d.projet', 'p')
-        ->addselect('SUM(d.montant)')
-        ->andWhere('d.projet = :projet')
-        ->setParameter('projet', $projet)
-        ->getQuery()
-        ->getOneOrNullResult()
-        ;
-    }
+  
     public function findActive(DateTime $date)
     {
         return $this->createQueryBuilder('d')
@@ -71,7 +63,18 @@ class DonRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('d')
             ->andWhere('d.montant > :montant')
             ->setParameter('montant', $montant)
+            ->orderBy('d.montant', 'DESC')
             ->getQuery()
             ->getResult();
-    }
+    }   
+            public function som($projet)
+            {
+                return $this->createQueryBuilder('d')
+                    ->andWhere('d.projet = :projet')
+                    ->setParameter('projet', $projet)
+                    ->select('SUM(d.montant) as somme_montant')
+                    ->getQuery()
+                    ->getSingleScalarResult();
+            }
+            
 }

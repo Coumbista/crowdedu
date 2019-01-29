@@ -25,12 +25,9 @@
   {% endblock %}
   {% block campagne %} 
   <div class="container"style="margin-top:150px;">
-  {# {% if app.user != null %} #}
-  {# {{dump(app.user.prenom)}} #}
-  {# {% endif %} #}
   <div class="row">
     <div class="col-lg-12">
-      {% for label, messages in app.flashes(['warning', 'error', 'success']) %}
+      {% for label, messages in app.flashes(['warning', 'danger', 'success']) %}
         {% for message in messages %}
           <div class="alert alert-{{ label }}">
             {{ message }}
@@ -51,10 +48,10 @@
          <span><b >Se connecter</b></span>
         </div>                   
         </div> <br>
-       <div class="card-body">        
-          <form action="{{path('send_mail')}}" method="POST" >
+       <div class="card-body"> 
+        {{ form_start(form) }}
           <div class="form-group">
-          <input type="text" class="form-control" name="_email"  placeholder="email">
+           {{ form_row(form.email,{'attr':{'class':'form-control'}})}}
           </div>
               <div class="row">
                   <div class="col-lg-2"></div>
@@ -65,8 +62,8 @@
               </div>
                  <div class="col-lg-2"></div>
                   </div>
-          </form>
-          {{ form(form) }}
+          {# </form> #}
+        {{ form_end(form) }}
        </div><br>
        <div class="card-footer text-muted">
           <div class="row">

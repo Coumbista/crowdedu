@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Repository\ProjetRepository ;
 use App\Repository\UserRepository ;
 use App\Repository\DonRepository ;
@@ -34,20 +35,15 @@ class FrontController extends Controller
      */
     public function findallProjet(Request $request,ProjetRepository $listprojets,DonRepository $donRepo):Response
     {
+        $p= new Projet();
+        $projet = $p->getId();
         $projets = $listprojets->findAll();     
         foreach($projets as $key=>$value){
             $value->setPhoto(base64_encode(stream_get_contents($value->getPhoto())));  
-            } 
+            }
             $paginator  = $this->get('knp_paginator');
             // paginer les projets
             $projet = $paginator->paginate($projets,$request->query->getInt('page', 1),6);
-           
-            // $dons = $donRepo->findAll();
-            // foreach($dons as $key0=>$values){
-            // foreach($values->getProjet() as $key=>$value){
-            //     $value->setPhoto(base64_encode(stream_get_contents($value->getPhoto())));  
-            //     } 
-            // } 
         return $this->render('front/index.html.twig', array('projet' => $projet));
     }   
     
@@ -59,12 +55,13 @@ class FrontController extends Controller
         $projet = $projetRepo->find($id);
         $entityManager = $this->getDoctrine()->getManager();
         $dons = $entityManager->getRepository(Don::class)->findActive(new \DateTime('-30 day'));
-        $donsE = $entityManager->getRepository(Don::class)->findEleves('1000');
-        // dump($donsE);
+        $donsE = $entityManager->getRepository(Don::class)->findEleves('1000');        
+        $som= $entityManager->getRepository(Don::class)->som($projet);
+        // dump($som);
         // die();
         
             $projet->setPhoto(base64_encode(stream_get_contents($projet->getPhoto())));      
-        return $this->render('front/detail.html.twig', array('projet' => $projet,'don'=>$dons,'donEL'=>$donsE));
+        return $this->render('front/detail.html.twig', array('projet' => $projet,'don'=>$dons,'donEL'=>$donsE,'som'=>$som));
     }
      /**
      * @Route("/mapage", name="mapage")
@@ -120,7 +117,7 @@ class FrontController extends Controller
         /**
          * @Route("/fairedon/{id}", name="fairedon")
          */
-        public function faireDon(Request $request,ProjetRepository $projetchoice,$id): Response
+        public function faireDon(Request $request,\Swift_Mailer $mailer,ProjetRepository $projetchoice,$id): Response
         {
             
             $projet_id = $projetchoice->find($id);
@@ -139,6 +136,20 @@ class FrontController extends Controller
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($don);
                 $entityManager->flush(); 
+                $message = (new \Swift_Message('Faire don'))
+                ->setFrom('crowdeud.edu@gmail.com')
+                ->setTo($don->getEmail())
+                ->setBody($this->renderView(
+                        'front/donrecu.html.twig',[
+                            'nom' => $don->getNom(), 
+                            'prenom'=>$don->getPrenom()
+                        ]
+                    ),
+                    'text/html'
+                );
+                $mailer->send($message);
+                // $this->addFlash('success', 'I envoyées à '.$user->getEmail());
+           
             }
         return $this->render(
             'front/don.html.twig',
@@ -161,6 +172,7 @@ class FrontController extends Controller
      */
     public function edit(Request $request, Projet $projet): Response
     {
+        
         $form = $this->createForm(Projet1Type::class, $projet);
         $form->handleRequest($request);
 
@@ -182,7 +194,7 @@ class FrontController extends Controller
     {
         $form = $this->createFormBuilder()
             ->add('email', EmailType::class)
-            ->add('save', SubmitType::class, ['label' => 'Demander un nouveau mot de passe'])
+            // ->add('save', SubmitType::class, ['label' => 'Demander un nouveau mot de passe'])
             ->getForm();
     
         $form->handleRequest($request);
@@ -192,11 +204,11 @@ class FrontController extends Controller
             $email = $data['email'];
             $user = $userRepo->findOneBy(['email'=>$email]);
             if(!$user) {
-                $this->addFlash('error', 'votre email n\'existe pas!');
-                return $this->render('front/registration.html.twig', []);
+                $this->addFlash('danger', 'votre email n\'existe pas!');
+                return $this->render('front/registration.html.twig', [ 'form' => $form->createView(),]);
             }
-            $message = (new \Swift_Message('Hello Email'))
-            ->setFrom('coumba01mbow@gmail.com')
+            $message = (new \Swift_Message('Réinitialisation de mot de passe demandée'))
+            ->setFrom('crowdeud.edu@gmail.com')
             ->setTo($user->getEmail())
             ->setBody($this->renderView(
                     'front/resetmdp.html.twig',[
@@ -213,5 +225,29 @@ class FrontController extends Controller
             'form' => $form->createView(),
         ]);        
     }
-
+     /**
+     * @Route("/change_mdp", name="change_mdp")
+     */ 
+    public function modifMPD(Request $request,UserPasswordEncoderInterface $passwordEncoder)
+    {
+        
+        $user = new User();
+        $form = $this->createForm(User1Type::class, $user);
+        
+        // 2)gérer la soumission (ne se produira que sur le POST)
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {  
+           
+            // 3) Encoder le mot de passe (vous pouvez aussi le faire via l'écouteur Doctrine)
+           
+            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+            $user->getEmail();
+            $user->setPassword($password);
+            $this->getDoctrine()->getManager()->flush();
+        }
+        return $this->render('front/changemdp.html.twig', [
+            'form' => $form->createView(),
+        ]);          
+    
+}
 }

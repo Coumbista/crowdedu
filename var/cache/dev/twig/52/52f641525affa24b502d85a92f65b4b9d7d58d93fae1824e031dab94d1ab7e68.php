@@ -212,13 +212,18 @@ class __TwigTemplate_52e08a4ec987533e430a7ab4aa8dcdf0ed29bac6c25f234646239425ad4
           <div class=\"col-lg-4\">            
              <div class=\"card\">
                <div class=\"card-header\">
-                  <span > <b style=\"color:#000000\">1000 Fcfa</b> sur un objectif de ";
+                  <span > <b style=\"color:#000000\">";
         // line 51
+        echo twig_escape_filter($this->env, (isset($context["som"]) || array_key_exists("som", $context) ? $context["som"] : (function () { throw new Twig_Error_Runtime('Variable "som" does not exist.', 51, $this->source); })()), "html", null, true);
+        echo " Fcfa</b> sur un objectif de ";
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["projet"]) || array_key_exists("projet", $context) ? $context["projet"] : (function () { throw new Twig_Error_Runtime('Variable "projet" does not exist.', 51, $this->source); })()), "budjet", array()), "html", null, true);
         echo " Fcfa</span><br><br>
                   <div class=\"probootstrap-cause-inner\">
                       <div class=\"progress\">
-                        <div class=\"progress-bar progress-bar-s2\" data-percent=\"2\"></div>
+                        <div class=\"progress-bar progress-bar-s2\" data-percent=\"";
+        // line 54
+        echo twig_escape_filter($this->env, (((isset($context["som"]) || array_key_exists("som", $context) ? $context["som"] : (function () { throw new Twig_Error_Runtime('Variable "som" does not exist.', 54, $this->source); })()) / twig_get_attribute($this->env, $this->source, (isset($context["projet"]) || array_key_exists("projet", $context) ? $context["projet"] : (function () { throw new Twig_Error_Runtime('Variable "projet" does not exist.', 54, $this->source); })()), "budjet", array())) * 100), "html", null, true);
+        echo "\"></div>
                       </div>
                     </div>
                </div>
@@ -345,7 +350,7 @@ class __TwigTemplate_52e08a4ec987533e430a7ab4aa8dcdf0ed29bac6c25f234646239425ad4
 
     public function getDebugInfo()
     {
-        return array (  325 => 116,  315 => 107,  305 => 105,  300 => 104,  296 => 103,  291 => 100,  281 => 98,  276 => 97,  272 => 96,  239 => 66,  230 => 60,  227 => 59,  217 => 51,  209 => 46,  203 => 45,  198 => 43,  191 => 38,  182 => 37,  166 => 31,  157 => 25,  150 => 21,  146 => 20,  137 => 16,  126 => 7,  117 => 6,  100 => 5,  83 => 4,  66 => 3,  49 => 2,  15 => 1,);
+        return array (  330 => 116,  320 => 107,  310 => 105,  305 => 104,  301 => 103,  296 => 100,  286 => 98,  281 => 97,  277 => 96,  244 => 66,  235 => 60,  232 => 59,  225 => 54,  217 => 51,  209 => 46,  203 => 45,  198 => 43,  191 => 38,  182 => 37,  166 => 31,  157 => 25,  150 => 21,  146 => 20,  137 => 16,  126 => 7,  117 => 6,  100 => 5,  83 => 4,  66 => 3,  49 => 2,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -400,10 +405,10 @@ class __TwigTemplate_52e08a4ec987533e430a7ab4aa8dcdf0ed29bac6c25f234646239425ad4
           <div class=\"col-lg-4\">            
              <div class=\"card\">
                <div class=\"card-header\">
-                  <span > <b style=\"color:#000000\">1000 Fcfa</b> sur un objectif de {{ projet.budjet}} Fcfa</span><br><br>
+                  <span > <b style=\"color:#000000\">{{som}} Fcfa</b> sur un objectif de {{ projet.budjet}} Fcfa</span><br><br>
                   <div class=\"probootstrap-cause-inner\">
                       <div class=\"progress\">
-                        <div class=\"progress-bar progress-bar-s2\" data-percent=\"2\"></div>
+                        <div class=\"progress-bar progress-bar-s2\" data-percent=\"{{(som / projet.budjet) * 100 }}\"></div>
                       </div>
                     </div>
                </div>

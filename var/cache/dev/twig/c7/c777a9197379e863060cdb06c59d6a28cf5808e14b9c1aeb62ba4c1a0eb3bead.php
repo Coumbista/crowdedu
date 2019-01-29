@@ -183,7 +183,7 @@ class __TwigTemplate_9b528ec2da09e16ceffcb67dcc4e91a13248ddbe9ba15a76992206e9e23
                                                                                     <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">
                                                                                         <tr>
                                                                                             <td valign=\"top\" class=\"textContent\">
-                                                                                                <h3 style=\"color:#5F5F5F;line-height:125%;font-family:Helvetica,Arial,sans-serif;font-size:20px;font-weight:normal;margin-top:0;margin-bottom:3px;text-align:center\">FundingEdu</h3>
+                                                                                                <h3 style=\"color:#5F5F5F;line-height:125%;font-family:Helvetica,Arial,sans-serif;font-size:20px;font-weight:normal;margin-top:0;margin-bottom:3px;text-align:center\">CrowdEdu</h3>
                                                                                                 <div style=\"text-align:left;font-family:Helvetica,Arial,sans-serif;font-size:15px;margin-bottom:0;color:#5F5F5F;line-height:135%\">Bonjour ";
         // line 159
         echo twig_escape_filter($this->env, (((isset($context["nom"]) || array_key_exists("nom", $context) ? $context["nom"] : (function () { throw new Twig_Error_Runtime('Variable "nom" does not exist.', 159, $this->source); })()) . " ") . (isset($context["prenom"]) || array_key_exists("prenom", $context) ? $context["prenom"] : (function () { throw new Twig_Error_Runtime('Variable "prenom" does not exist.', 159, $this->source); })())), "html", null, true);
@@ -213,11 +213,11 @@ class __TwigTemplate_9b528ec2da09e16ceffcb67dcc4e91a13248ddbe9ba15a76992206e9e23
                                                                         <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"50%\" class=\"emailButton\" style=\"background-color: #96bf31 \">
                                                                             <tr>
                                                                                 <td align=\"center\" valign=\"middle\" class=\"buttonContent\" style=\"padding-top:15px;padding-bottom:15px;padding-right:15px;padding-left:15px\">
-                                                                                    <a style=\"color:#FFFFFF;text-decoration:none;font-family:Helvetica,Arial,sans-serif;font-size:20px;line-height:135%\" href=\"";
+                                                                                    <a style=\"color:#FFFFFF;text-decoration:none;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:135%\" href=\"";
         // line 185
-        echo twig_escape_filter($this->env, ((isset($context["addr_web"]) || array_key_exists("addr_web", $context) ? $context["addr_web"] : (function () { throw new Twig_Error_Runtime('Variable "addr_web" does not exist.', 185, $this->source); })()) . "/login"), "html", null, true);
+        echo twig_escape_filter($this->env, ((isset($context["addr_web"]) || array_key_exists("addr_web", $context) ? $context["addr_web"] : (function () { throw new Twig_Error_Runtime('Variable "addr_web" does not exist.', 185, $this->source); })()) . "/change_mdp"), "html", null, true);
         echo "\" target=\"_blank\">Réinitialiser le mot de passe</a>
-                                                                                </td>
+                                                                                     </td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
@@ -227,14 +227,10 @@ class __TwigTemplate_9b528ec2da09e16ceffcb67dcc4e91a13248ddbe9ba15a76992206e9e23
                                                     </tr>
                                                 </table>
                                             </td>
-                                        </tr>
-                                       
-                                      
+                                        </tr> 
                                     </table>
                                    
-                                    <table bgcolor=\"#E1E1E1\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"500\" id=\"emailFooter\">
-
-                                      
+                                    <table bgcolor=\"#E1E1E1\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"500\" id=\"emailFooter\">                                      
                                         <tr>
                                             <td align=\"center\" valign=\"top\">
                                                 <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">
@@ -456,7 +452,7 @@ class __TwigTemplate_9b528ec2da09e16ceffcb67dcc4e91a13248ddbe9ba15a76992206e9e23
                                                                                     <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">
                                                                                         <tr>
                                                                                             <td valign=\"top\" class=\"textContent\">
-                                                                                                <h3 style=\"color:#5F5F5F;line-height:125%;font-family:Helvetica,Arial,sans-serif;font-size:20px;font-weight:normal;margin-top:0;margin-bottom:3px;text-align:center\">FundingEdu</h3>
+                                                                                                <h3 style=\"color:#5F5F5F;line-height:125%;font-family:Helvetica,Arial,sans-serif;font-size:20px;font-weight:normal;margin-top:0;margin-bottom:3px;text-align:center\">CrowdEdu</h3>
                                                                                                 <div style=\"text-align:left;font-family:Helvetica,Arial,sans-serif;font-size:15px;margin-bottom:0;color:#5F5F5F;line-height:135%\">Bonjour {{nom ~ ' ' ~ prenom}} <br>
                                                                                                Nous avons reçu une demande de réinitialisation du mot de passe de votre compte FundingEdu.Pour réinitialiser votre mot de passe FundingEdu, il vous suffit de cliquer sur le bouton ci-dessous. </td>
                                                                                         </tr>
@@ -483,8 +479,8 @@ class __TwigTemplate_9b528ec2da09e16ceffcb67dcc4e91a13248ddbe9ba15a76992206e9e23
                                                                         <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"50%\" class=\"emailButton\" style=\"background-color: #96bf31 \">
                                                                             <tr>
                                                                                 <td align=\"center\" valign=\"middle\" class=\"buttonContent\" style=\"padding-top:15px;padding-bottom:15px;padding-right:15px;padding-left:15px\">
-                                                                                    <a style=\"color:#FFFFFF;text-decoration:none;font-family:Helvetica,Arial,sans-serif;font-size:20px;line-height:135%\" href=\"{{ addr_web ~ '/login' }}\" target=\"_blank\">Réinitialiser le mot de passe</a>
-                                                                                </td>
+                                                                                    <a style=\"color:#FFFFFF;text-decoration:none;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:135%\" href=\"{{ addr_web ~ '/change_mdp' }}\" target=\"_blank\">Réinitialiser le mot de passe</a>
+                                                                                     </td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
@@ -494,14 +490,10 @@ class __TwigTemplate_9b528ec2da09e16ceffcb67dcc4e91a13248ddbe9ba15a76992206e9e23
                                                     </tr>
                                                 </table>
                                             </td>
-                                        </tr>
-                                       
-                                      
+                                        </tr> 
                                     </table>
                                    
-                                    <table bgcolor=\"#E1E1E1\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"500\" id=\"emailFooter\">
-
-                                      
+                                    <table bgcolor=\"#E1E1E1\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"500\" id=\"emailFooter\">                                      
                                         <tr>
                                             <td align=\"center\" valign=\"top\">
                                                 <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">

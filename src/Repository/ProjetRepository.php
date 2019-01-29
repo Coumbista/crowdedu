@@ -58,10 +58,5 @@ class ProjetRepository extends ServiceEntityRepository
         ->getResult()
     ;
     }
-
-        public function tronquer_texte($texte, $nbchar)
-        {
-            return (strlen($texte) > $nbchar ? substr(substr($texte,0,$nbchar),0,
-            strrpos(substr($texte,0,$nbchar)," "))." (...)" : $texte);
-        }
+        
 }

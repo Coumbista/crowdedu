@@ -48,10 +48,10 @@
           <div class="col-lg-4">            
              <div class="card">
                <div class="card-header">
-                  <span > <b style="color:#000000">1000 Fcfa</b> sur un objectif de {{ projet.budjet}} Fcfa</span><br><br>
+                  <span > <b style="color:#000000">{{som}} Fcfa</b> sur un objectif de {{ projet.budjet}} Fcfa</span><br><br>
                   <div class="probootstrap-cause-inner">
                       <div class="progress">
-                        <div class="progress-bar progress-bar-s2" data-percent="2"></div>
+                        <div class="progress-bar progress-bar-s2" data-percent="{{(som / projet.budjet) * 100 }}"></div>
                       </div>
                     </div>
                </div>

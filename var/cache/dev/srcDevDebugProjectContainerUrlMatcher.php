@@ -119,33 +119,34 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     .'|/campagne(*:180)'
                     .'|/([^/]++)/edit_projet(*:209)'
                     .'|/mail(*:222)'
-                    .'|/paiement(*:239)'
-                    .'|/register(*:256)'
+                    .'|/change_mdp(*:241)'
+                    .'|/paiement(*:258)'
+                    .'|/register(*:275)'
                     .'|/log(?'
-                        .'|in(*:273)'
-                        .'|out(*:284)'
+                        .'|in(*:292)'
+                        .'|out(*:303)'
                     .')'
                     .'|/user/([^/]++)(?'
-                        .'|(*:310)'
-                        .'|/edit(*:323)'
-                        .'|(*:331)'
+                        .'|(*:329)'
+                        .'|/edit(*:342)'
+                        .'|(*:350)'
                     .')'
                     .'|/_(?'
-                        .'|error/(\\d+)(?:\\.([^/]++))?(*:371)'
-                        .'|wdt/([^/]++)(*:391)'
+                        .'|error/(\\d+)(?:\\.([^/]++))?(*:390)'
+                        .'|wdt/([^/]++)(*:410)'
                         .'|profiler/([^/]++)(?'
                             .'|/(?'
-                                .'|search/results(*:437)'
-                                .'|router(*:451)'
+                                .'|search/results(*:456)'
+                                .'|router(*:470)'
                                 .'|exception(?'
-                                    .'|(*:471)'
-                                    .'|\\.css(*:484)'
+                                    .'|(*:490)'
+                                    .'|\\.css(*:503)'
                                 .')'
                             .')'
-                            .'|(*:494)'
+                            .'|(*:513)'
                         .')'
                     .')'
-                    .'|/security_logout(*:520)'
+                    .'|/security_logout(*:539)'
                 .')$}sD',
         );
 
@@ -167,21 +168,22 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                             180 => array(array('_route' => 'campagne', '_controller' => 'App\\Controller\\FrontController::SaveProjet'), array(), null, null),
                             209 => array(array('_route' => 'edit_projet', '_controller' => 'App\\Controller\\FrontController::edit'), array('id'), array('GET' => 0, 'POST' => 1), null),
                             222 => array(array('_route' => 'send_mail', '_controller' => 'App\\Controller\\FrontController::index'), array(), null, null),
-                            239 => array(array('_route' => 'paiement', '_controller' => 'App\\Controller\\PaiementController::index'), array(), null, null),
-                            256 => array(array('_route' => 'user_registration', '_controller' => 'App\\Controller\\RegistrationController::register'), array(), null, null),
-                            273 => array(array('_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'), array(), null, null),
-                            284 => array(array('_route' => 'security_logout', '_controller' => 'App\\Controller\\SecurityController::logout'), array(), null, null),
-                            310 => array(array('_route' => 'user_show', '_controller' => 'App\\Controller\\UserController::show'), array('id'), array('GET' => 0), null),
-                            323 => array(array('_route' => 'user_edit', '_controller' => 'App\\Controller\\UserController::edit'), array('id'), array('GET' => 0, 'POST' => 1), null),
-                            331 => array(array('_route' => 'user_delete', '_controller' => 'App\\Controller\\UserController::delete'), array('id'), array('DELETE' => 0), null),
-                            371 => array(array('_route' => '_twig_error_test', '_controller' => 'twig.controller.preview_error::previewErrorPageAction', '_format' => 'html'), array('code', '_format'), null, null),
-                            391 => array(array('_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'), array('token'), null, null),
-                            437 => array(array('_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'), array('token'), null, null),
-                            451 => array(array('_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'), array('token'), null, null),
-                            471 => array(array('_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'), array('token'), null, null),
-                            484 => array(array('_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'), array('token'), null, null),
-                            494 => array(array('_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'), array('token'), null, null),
-                            520 => array(array('_route' => 'logout'), array(), null, null),
+                            241 => array(array('_route' => 'change_mdp', '_controller' => 'App\\Controller\\FrontController::modifMPD'), array(), null, null),
+                            258 => array(array('_route' => 'paiement', '_controller' => 'App\\Controller\\PaiementController::index'), array(), null, null),
+                            275 => array(array('_route' => 'user_registration', '_controller' => 'App\\Controller\\RegistrationController::register'), array(), null, null),
+                            292 => array(array('_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'), array(), null, null),
+                            303 => array(array('_route' => 'security_logout', '_controller' => 'App\\Controller\\SecurityController::logout'), array(), null, null),
+                            329 => array(array('_route' => 'user_show', '_controller' => 'App\\Controller\\UserController::show'), array('id'), array('GET' => 0), null),
+                            342 => array(array('_route' => 'user_edit', '_controller' => 'App\\Controller\\UserController::edit'), array('id'), array('GET' => 0, 'POST' => 1), null),
+                            350 => array(array('_route' => 'user_delete', '_controller' => 'App\\Controller\\UserController::delete'), array('id'), array('DELETE' => 0), null),
+                            390 => array(array('_route' => '_twig_error_test', '_controller' => 'twig.controller.preview_error::previewErrorPageAction', '_format' => 'html'), array('code', '_format'), null, null),
+                            410 => array(array('_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'), array('token'), null, null),
+                            456 => array(array('_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'), array('token'), null, null),
+                            470 => array(array('_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'), array('token'), null, null),
+                            490 => array(array('_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'), array('token'), null, null),
+                            503 => array(array('_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'), array('token'), null, null),
+                            513 => array(array('_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'), array('token'), null, null),
+                            539 => array(array('_route' => 'logout'), array(), null, null),
                         );
 
                         list($ret, $vars, $requiredMethods, $requiredSchemes) = $routes[$m];
@@ -207,7 +209,7 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $ret;
                 }
 
-                if (520 === $m) {
+                if (539 === $m) {
                     break;
                 }
                 $regex = substr_replace($regex, 'F', $m - $offset, 1 + strlen($m));
